@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
   public static DriveBase drivebase;
   public static Elevator elevator;
   public static DriveBaseAdvanced driveBaseAdvanced;
-  public static SerialPort openMV_Port = new SerialPort(115200, edu.wpi.first.wpilibj.SerialPort.Port.kUSB);
+  //public static SerialPort openMV_Port = new SerialPort(115200, edu.wpi.first.wpilibj.SerialPort.Port.kUSB2);
   public static TrackPanel trackpanel;
   
   @Override
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
     elevator = new Elevator();
     drivebase = new DriveBase();
     driveBaseAdvanced = new DriveBaseAdvanced();
-    trackpanel = new TrackPanel(openMV_Port);
+    //trackpanel = new TrackPanel(openMV_Port);
 
     driveBaseAdvanced.MovementRecorderInit();
     oi = new OI();

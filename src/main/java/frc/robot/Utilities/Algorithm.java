@@ -57,6 +57,15 @@ public class Algorithm {
       return Math.sqrt(outputRaw);
     }
 
+        
+    public static double VelocityCalculator(double input){
+    
+      //  double output = input * Constants.kSensorUnitsPerRotation * Constants.MaxRPM / 1000 /*60ms pre unit*/ ;
+          double output = input * Constants.maxRPM;
+          return output;
+      
+      }
+
 
 
 }

@@ -10,11 +10,11 @@ public class Constants {
     public static final int driveBase_kSlotID = 0;
 
 
-    public static final double driveBase_kP = 1.4;
-    public static final double driveBase_kI = 0.02;
+    public static final double driveBase_kP = 0.85;
+    public static final double driveBase_kI = 0.015;
     public static final double driveBase_kD = 25;
     public static final double driveBase_kF = 0.75;
-    public static final int driveBase_kIzone = 350;
+    public static final int driveBase_kIzone = 50;
 
     public static final int maxRPM = 3150;
     public static final int kSensorUnitsPerRotation = 4096;

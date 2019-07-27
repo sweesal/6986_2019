@@ -1,6 +1,7 @@
 
 package frc.robot.Subsystem;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -62,8 +63,9 @@ public class DriveBase extends Subsystem {
   public void TalonSRX_Init(){
 
     ConfigFactoryDefault();
+    ConfigTalonStartUpSettings();
     SetEncoder();
-    ConfigFactoryDefault();
+    ConfigPIDParameter();
 
   }
 
@@ -109,6 +111,20 @@ public class DriveBase extends Subsystem {
     differentialDrive.tankDrive(leftPower*speedRatio, rightPower*speedRatio);
 
   }
+
+  public void TankDrive_Velocity(double leftPower, double rightPower){
+
+    double leftSpeed = Algorithm.VelocityCalculator(Algorithm.ConfigJoystickInput_Velocity(leftPower));
+    double rightSpeed = -Algorithm.VelocityCalculator(Algorithm.ConfigJoystickInput_Velocity(rightPower)); 
+
+    left_1.set(ControlMode.Velocity, leftSpeed);
+    right_1.set(ControlMode.Velocity, rightSpeed);
+    left_2.set(ControlMode.Velocity, leftSpeed);
+    right_2.set(ControlMode.Velocity, rightSpeed);
+    left_3.set(ControlMode.Velocity, leftSpeed);
+    right_3.set(ControlMode.Velocity, rightSpeed);
+
+}
 
   public void TankDrive_Original(double inputLeft, double inputRight){
     differentialDrive.tankDrive(inputLeft, inputRight);
@@ -196,7 +212,47 @@ public class DriveBase extends Subsystem {
     right_3.configPeakCurrentDuration(1, Constants.kTimeoutMs);
     right_3.configPeakOutputReverse(-1, Constants.kTimeoutMs);
 
-}
+  }
+
+  public void ConfigPIDParameter(){
+
+    left_1.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    left_1.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    left_1.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    left_1.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);
+    left_1.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+    right_1.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    right_1.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    right_1.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    right_1.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);        
+    right_1.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+    left_2.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    left_2.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    left_2.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    left_2.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);
+    left_2.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+    right_2.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    right_2.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    right_2.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    right_2.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);        
+    right_2.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+    left_3.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    left_3.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    left_3.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    left_3.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);
+    left_3.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+    right_3.config_kF(Constants.driveBase_kSlotID, Constants.driveBase_kF, Constants.kTimeoutMs);
+    right_3.config_kP(Constants.driveBase_kSlotID, Constants.driveBase_kP, Constants.kTimeoutMs);
+    right_3.config_kI(Constants.driveBase_kSlotID, Constants.driveBase_kI, Constants.kTimeoutMs);
+    right_3.config_kD(Constants.driveBase_kSlotID, Constants.driveBase_kD, Constants.kTimeoutMs);        
+    right_3.config_IntegralZone(Constants.driveBase_kSlotID, Constants.driveBase_kIzone, Constants.kTimeoutMs);
+
+  }
 
 
 

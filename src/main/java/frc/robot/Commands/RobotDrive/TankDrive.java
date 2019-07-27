@@ -15,7 +15,8 @@ public class TankDrive extends Command {
 
   @Override
   protected void execute() {
-    Robot.drivebase.TankDrive_PercentOutput(Robot.oi.logitechF310.getRawAxis(1), Robot.oi.logitechF310.getRawAxis(5));
+  //  Robot.drivebase.TankDrive_PercentOutput(Robot.oi.logitechF310.getRawAxis(1), Robot.oi.logitechF310.getRawAxis(5));
+      Robot.drivebase.TankDrive_Velocity(Robot.oi.logitechF310.getRawAxis(1), Robot.oi.logitechF310.getRawAxis(5));
   }
 
   @Override
@@ -26,7 +27,8 @@ public class TankDrive extends Command {
 
   @Override
   protected void end() {
-    Robot.drivebase.StopRobot_TankDrive();
+  //  Robot.drivebase.StopRobot_TankDrive();
+      Robot.drivebase.TankDrive_Velocity(0, 0);
   }
 
 
