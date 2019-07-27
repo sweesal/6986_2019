@@ -34,6 +34,11 @@ public class DriveBase extends Subsystem {
   public DriveBase(){
 
     TalonSRX_Init();
+
+    left_2.follow(left_1);
+    left_3.follow(left_1);
+    right_2.follow(right_1);
+    right_3.follow(right_1);
     
     differentialDrive.setSafetyEnabled(false);
     differentialDrive.setExpiration(0.1);

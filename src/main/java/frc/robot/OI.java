@@ -101,7 +101,7 @@ public class OI {
 
 
 
-        ConfigCommandDisplay();
+    //    ConfigCommandDisplay();
     }
 
     public void ConfigCommandDisplay(){
